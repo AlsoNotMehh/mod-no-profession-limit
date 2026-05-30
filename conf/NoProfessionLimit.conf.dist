@@ -1,0 +1,232 @@
+#
+# NoProfessionLimit module
+#
+# Removes or raises the primary-profession limit and can optionally make
+# profession progress account-bound.
+#
+
+#
+# Enable the module.
+#
+# Default: 1
+
+NoProfessionLimit.Enable = 1
+
+#
+# Maximum primary professions per character.
+#
+# - 11 means a character can learn every WotLK primary profession.
+# - 0 means "auto": use the number of professions enabled in AllowList.
+# - Values above 11 are clamped to 11.
+#
+# Default: 11
+
+NoProfessionLimit.MaxPrimaryProfessions = 11
+
+#
+# Primary profession allow list.
+#
+# Controls which primary professions are counted by this module and used by
+# account-bound sync. Use "all" for every WotLK primary profession.
+#
+# Accepted names:
+#   alchemy, blacksmithing, enchanting, engineering, herbalism,
+#   inscription, jewelcrafting, leatherworking, mining, skinning, tailoring
+#
+# Spanish aliases are also accepted:
+#   alquimia, herreria, encantamiento, ingenieria, herboristeria,
+#   inscripcion, joyeria, peleteria, mineria, desuello, sastreria
+#
+# You may also use skill IDs:
+#   171,164,333,202,182,773,755,165,186,393,197
+#
+# Example:
+#   NoProfessionLimit.Professions.AllowList = alchemy, enchanting, tailoring
+#
+# Default: all
+
+NoProfessionLimit.Professions.AllowList = all
+
+#
+# Primary profession block list.
+#
+# Removes professions from AllowList without rewriting the whole list.
+#
+# Example:
+#   NoProfessionLimit.Professions.BlockList = engineering, inscription
+#
+# Default: ""
+
+NoProfessionLimit.Professions.BlockList = ""
+
+#
+# Count only allowed professions when calculating remaining profession slots.
+#
+# Recommended: 1.
+#
+# Default: 1
+
+NoProfessionLimit.Professions.CountOnlyAllowed = 1
+
+#
+# Enforce the allow list by removing disallowed primary professions from
+# characters on login or immediately after learning.
+#
+# Keep this disabled unless you intentionally want to forbid blocked
+# professions. Enabling it can remove existing blocked professions.
+#
+# Default: 0
+
+NoProfessionLimit.Professions.EnforceAllowedList = 0
+
+#
+# Maximum profession skill value that account-bound sync may copy.
+#
+# WotLK maximum is 450. This cap prevents accidentally syncing custom values
+# above the expansion's normal limit.
+#
+# Default: 450
+
+NoProfessionLimit.Professions.MaxSkillValue = 450
+
+#
+# Account-bound profession sync.
+#
+# When enabled, the module can copy profession ranks, skill values and recipes
+# from characters on the same account to other characters on that account.
+#
+# This does not create custom tables. It uses AzerothCore's existing
+# character_skills and character_spell tables.
+#
+# Default: 0
+
+NoProfessionLimit.AccountBound.Enable = 0
+
+#
+# Only share profession progress between characters of the same faction.
+#
+# Recommended for public realms: 1.
+#
+# Default: 1
+
+NoProfessionLimit.AccountBound.SameFactionOnly = 1
+
+#
+# Run a database backfill at worldserver startup.
+#
+# This pushes already-known account profession progress into every eligible
+# character on the account. It can touch many rows on large realms, so keep it
+# disabled unless you want a one-time/full migration.
+#
+# Default: 0
+
+NoProfessionLimit.AccountBound.StartupBackfill = 0
+
+#
+# Sync missing account-bound profession data when a character logs in.
+#
+# Default: 1
+
+NoProfessionLimit.AccountBound.SyncOnLogin = 1
+
+#
+# When a character learns a profession/recipe or gains profession skill,
+# write that progress to other eligible characters on the same account.
+#
+# Online target characters may need to relog to see DB-written changes.
+#
+# Default: 1
+
+NoProfessionLimit.AccountBound.SyncOnLearn = 1
+
+#
+# Re-apply account-bound sync to online characters after a config reload.
+#
+# Default: 1
+
+NoProfessionLimit.AccountBound.SyncOnlineOnReload = 1
+
+#
+# Also sync secondary professions: Cooking, First Aid and Fishing.
+#
+# Secondary professions do not count against MaxPrimaryProfessions.
+#
+# Default: 0
+
+NoProfessionLimit.AccountBound.IncludeSecondaryProfessions = 0
+
+#
+# Sync profession skill points and max ranks.
+#
+# Example: if one character has Tailoring 437/450, another eligible character
+# can receive Tailoring 437/450.
+#
+# Default: 1
+
+NoProfessionLimit.AccountBound.SyncSkillProgress = 1
+
+#
+# Sync profession rank spells.
+#
+# Example: Apprentice/Journeyman/Expert/Artisan/Master/Grand Master.
+#
+# Default: 1
+
+NoProfessionLimit.AccountBound.SyncProfessionRanks = 1
+
+#
+# Sync profession recipes and learned profession abilities.
+#
+# This copies spells attached to the managed profession skill lines, including
+# recipes learned from trainers, items, quests or discovery when they are
+# present in character_spell.
+#
+# Default: 1
+
+NoProfessionLimit.AccountBound.SyncRecipes = 1
+
+#
+# Sync spells that are granted automatically by the profession skill line.
+#
+# Recommended with SyncSkillProgress so helper abilities stay consistent.
+#
+# Default: 1
+
+NoProfessionLimit.AccountBound.SyncSkillGrantedSpells = 1
+
+#
+# Require the target character to have enough profession skill before learning
+# a synced recipe.
+#
+# Recommended: 1. If SyncSkillProgress is enabled, skill is synced before
+# recipes on login, so normal recipe sync still works.
+#
+# Default: 1
+
+NoProfessionLimit.AccountBound.RequireRecipeSkill = 1
+
+#
+# Extra spell IDs to sync even if the module cannot classify them as normal
+# profession spells.
+#
+# Use this for custom recipes or custom profession helper spells.
+#
+# Example:
+#   NoProfessionLimit.AccountBound.SpellAllowList = 900001,900002
+#
+# Default: ""
+
+NoProfessionLimit.AccountBound.SpellAllowList = ""
+
+#
+# Spell IDs that must never be synced.
+#
+# Use this for profession specializations or custom recipes you want to keep
+# character-specific.
+#
+# Example:
+#   NoProfessionLimit.AccountBound.SpellBlockList = 20219,20222
+#
+# Default: ""
+
+NoProfessionLimit.AccountBound.SpellBlockList = ""
