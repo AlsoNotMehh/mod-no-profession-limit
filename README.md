@@ -11,6 +11,7 @@ An advanced profession system for **AzerothCore (WotLK 3.3.5a)** that removes or
 In vanilla WotLK, characters are strictly capped at learning only 2 primary professions. Players must either create multiple profession mules or abandon leveled skills to craft needed consumables and equipment. 
 
 **`NoProfessionLimit`** lifts this restriction cleanly, allowing characters to learn all 11 primary professions, while offering optional account-wide synchronization for skill levels, ranks, and recipes across alts without modifying core database schemas.
+
 ## 📊 Feature Comparison
 
 | Feature | Stock AzerothCore | NoProfessionLimit |
@@ -21,6 +22,7 @@ In vanilla WotLK, characters are strictly capped at learning only 2 primary prof
 | **Faction Isolation** | ❌ None | ✅ **Optional same-faction-only sync to keep Horde/Alliance separate** |
 | **Secondary Professions** | ❌ Unsynced | ✅ **Optional sync for Cooking, First Aid, and Fishing** |
 | **Database Requirements** | ❌ None | ✅ **Zero custom SQL tables; writes directly to core tables** |
+
 ## ⚙️ Technical Architecture
 
 ### 1. Dynamic Primary Profession Cap
@@ -34,6 +36,7 @@ When account-bound mode is enabled:
 - Replicates learned spell recipes and skill rank progression across characters on the same account.
 - Integrates seamlessly with AzerothCore's native `character_skills` and `character_spell` tables.
 - Employs silent synchronization to eliminate login freezes and chat spam.
+
 ## 📋 Configuration Reference (`NoProfessionLimit.conf`)
 
 | Setting | Default | Description |
@@ -45,6 +48,7 @@ When account-bound mode is enabled:
 | `NoProfessionLimit.Sync.Enable` | `0` | Optional master switch for account-bound profession sync. |
 | `NoProfessionLimit.Sync.SameFactionOnly` | `0` | Restricts profession synchronization to same-faction alts. |
 | `NoProfessionLimit.Sync.SecondaryProfessions` | `0` | Synchronizes Cooking, First Aid, and Fishing across alts. |
+
 ## 🛠️ Installation
 
 1. Place the module in `azerothcore-wotlk/modules/`:
@@ -52,12 +56,15 @@ When account-bound mode is enabled:
    cd azerothcore-wotlk/modules
    git clone https://github.com/AlsoNotMehh/mod-no-profession-limit.git
    ```
+
 2. Re-run CMake and compile your server:
    ```bash
    cmake -B build
    cmake --build build --config Release
    ```
+
 3. Copy `conf/NoProfessionLimit.conf.dist` to your `worldserver` configs directory as `NoProfessionLimit.conf` and customize as needed.
+
 ## ⭐ Show your support
 
 If you find this module helpful for your server, please consider giving it a star on GitHub! It helps more developers in the AzerothCore community discover the project.
@@ -66,6 +73,7 @@ If you find this module helpful for your server, please consider giving it a sta
 
 - **Author & Enhancements:** [AlsoNotMehh](https://github.com/AlsoNotMehh) ([Discord](https://discord.com/users/1063304041419001966) / [Email](mailto:itsbrayanrodriguez@gmail.com))
 - **Framework:** [AzerothCore](https://www.azerothcore.org)
+
 ## 📜 License
 
 This project is licensed under the [MIT License](LICENSE).
