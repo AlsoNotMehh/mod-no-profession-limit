@@ -10,7 +10,7 @@ An advanced profession system for **AzerothCore (WotLK 3.3.5a)** that removes or
 ### 💡 Why this module?
 In vanilla WotLK, characters are strictly capped at learning only 2 primary professions. Players must either create multiple profession mules or abandon leveled skills to craft needed consumables and equipment. 
 
-**`NoProfessionLimit`** lifts this restriction cleanly—allowing characters to learn all 11 primary professions, while offering optional account-wide synchronization for skill levels, ranks, and recipes across alts without modifying core database schemas.
+**`NoProfessionLimit`** lifts this restriction cleanly, allowing characters to learn all 11 primary professions, while offering optional account-wide synchronization for skill levels, ranks, and recipes across alts without modifying core database schemas.
 ## 📊 Feature Comparison
 
 | Feature | Stock AzerothCore | NoProfessionLimit |
