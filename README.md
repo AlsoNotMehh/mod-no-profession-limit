@@ -1,4 +1,4 @@
-# ![logo](https://raw.githubusercontent.com/azerothcore/azerothcore.github.io/master/images/logo-github.png) AzerothCore Module: NoProfessionLimit
+# ![logo](https://raw.githubusercontent.com/azerothcore/azerothcore.github.io/master/images/logo-github.png) AzerothCore Module: mod-no-profession-limit
 
 [![AzerothCore Module](https://img.shields.io/badge/AzerothCore-Module-red?style=flat-square&logo=github)](https://github.com/azerothcore/azerothcore-wotlk)
 [![C++20](https://img.shields.io/badge/Language-C++20-00599C?style=flat-square&logo=c%2B%2B)](https://isocpp.org/)
@@ -62,7 +62,7 @@ When account-bound mode is enabled:
 1. Place the module in `azerothcore-wotlk/modules/`:
    ```bash
    cd azerothcore-wotlk/modules
-   git clone https://github.com/AlsoNotMehh/NoProfessionLimit.git
+   git clone https://github.com/AlsoNotMehh/mod-no-profession-limit.git
    ```
 2. Re-run CMake and compile your server:
    ```bash
