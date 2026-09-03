@@ -81,7 +81,7 @@ If you find this module helpful for your server, please consider giving it a sta
 
 ## 🤝 Credits
 
-- **Author & Enhancements:** [AlsoNotMehh](https://github.com/AlsoNotMehh)
+- **Author & Enhancements:** [AlsoNotMehh](https://github.com/AlsoNotMehh) ([Discord](https://discord.com/users/1063304041419001966) / [Email](mailto:itsbrayanrodriguez@gmail.com))
 - **Framework:** [AzerothCore](https://www.azerothcore.org)
 
 ---
