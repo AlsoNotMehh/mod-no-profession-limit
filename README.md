@@ -73,6 +73,12 @@ When account-bound mode is enabled:
 
 ---
 
+---
+
+## ⭐ Show your support
+
+If you find this module helpful for your server, please consider giving it a star on GitHub! It helps more developers in the AzerothCore community discover the project.
+
 ## 🤝 Credits
 
 - **Author & Enhancements:** [AlsoNotMehh](https://github.com/AlsoNotMehh)
