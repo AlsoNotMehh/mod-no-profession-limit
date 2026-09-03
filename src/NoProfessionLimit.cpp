@@ -1093,3 +1093,8 @@ void AddNoProfessionLimitScripts()
     new NoProfessionLimitWorldScript();
     new NoProfessionLimitPlayerScript();
 }
+
+void Addmod_no_profession_limitScripts()
+{
+    AddNoProfessionLimitScripts();
+}
