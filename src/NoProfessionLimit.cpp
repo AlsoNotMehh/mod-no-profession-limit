@@ -967,33 +967,33 @@ void BackfillAccountBoundProfessions()
 
 void LoadModuleConfig()
 {
-    Config.Enabled = sConfigMgr->GetOption<bool>("NoProfessionLimit.Enable", true);
-    Config.MaxPrimaryProfessions = sConfigMgr->GetOption<uint32>("NoProfessionLimit.MaxPrimaryProfessions", MaxSupportedPrimaryProfessions);
-    Config.CountOnlyAllowedPrimaryProfessions = sConfigMgr->GetOption<bool>("NoProfessionLimit.Professions.CountOnlyAllowed", true);
-    Config.EnforceAllowedPrimaryProfessions = sConfigMgr->GetOption<bool>("NoProfessionLimit.Professions.EnforceAllowedList", false);
-    Config.MaxSyncedSkillValue = uint16(std::clamp<uint32>(sConfigMgr->GetOption<uint32>("NoProfessionLimit.Professions.MaxSkillValue", DefaultMaxProfessionSkill), 1, DefaultMaxProfessionSkill));
+    Config.Enabled = sConfigMgr->GetOption<bool>("NoProfessionLimit.Enable", true, false);
+    Config.MaxPrimaryProfessions = sConfigMgr->GetOption<uint32>("NoProfessionLimit.MaxPrimaryProfessions", MaxSupportedPrimaryProfessions, false);
+    Config.CountOnlyAllowedPrimaryProfessions = sConfigMgr->GetOption<bool>("NoProfessionLimit.Professions.CountOnlyAllowed", true, false);
+    Config.EnforceAllowedPrimaryProfessions = sConfigMgr->GetOption<bool>("NoProfessionLimit.Professions.EnforceAllowedList", false, false);
+    Config.MaxSyncedSkillValue = uint16(std::clamp<uint32>(sConfigMgr->GetOption<uint32>("NoProfessionLimit.Professions.MaxSkillValue", DefaultMaxProfessionSkill, false), 1, DefaultMaxProfessionSkill));
 
     Config.AllowedPrimarySkills = ParsePrimaryProfessionList(
-        sConfigMgr->GetOption<std::string>("NoProfessionLimit.Professions.AllowList", "all"), true);
+        sConfigMgr->GetOption<std::string>("NoProfessionLimit.Professions.AllowList", "all", false), true);
 
     for (uint32 blockedSkill : ParsePrimaryProfessionList(
-        sConfigMgr->GetOption<std::string>("NoProfessionLimit.Professions.BlockList", ""), false))
+        sConfigMgr->GetOption<std::string>("NoProfessionLimit.Professions.BlockList", "", false), false))
         Config.AllowedPrimarySkills.erase(blockedSkill);
 
-    Config.AccountBoundEnabled = sConfigMgr->GetOption<bool>("NoProfessionLimit.AccountBound.Enable", false);
-    Config.AccountBoundSameFactionOnly = sConfigMgr->GetOption<bool>("NoProfessionLimit.AccountBound.SameFactionOnly", true);
-    Config.AccountBoundStartupBackfill = sConfigMgr->GetOption<bool>("NoProfessionLimit.AccountBound.StartupBackfill", false);
-    Config.AccountBoundSyncOnLogin = sConfigMgr->GetOption<bool>("NoProfessionLimit.AccountBound.SyncOnLogin", true);
-    Config.AccountBoundSyncOnLearn = sConfigMgr->GetOption<bool>("NoProfessionLimit.AccountBound.SyncOnLearn", true);
-    Config.AccountBoundSyncOnlineOnReload = sConfigMgr->GetOption<bool>("NoProfessionLimit.AccountBound.SyncOnlineOnReload", true);
-    Config.AccountBoundIncludeSecondaryProfessions = sConfigMgr->GetOption<bool>("NoProfessionLimit.AccountBound.IncludeSecondaryProfessions", false);
-    Config.AccountBoundSyncSkillProgress = sConfigMgr->GetOption<bool>("NoProfessionLimit.AccountBound.SyncSkillProgress", true);
-    Config.AccountBoundSyncProfessionRanks = sConfigMgr->GetOption<bool>("NoProfessionLimit.AccountBound.SyncProfessionRanks", true);
-    Config.AccountBoundSyncRecipes = sConfigMgr->GetOption<bool>("NoProfessionLimit.AccountBound.SyncRecipes", true);
-    Config.AccountBoundSyncSkillGrantedSpells = sConfigMgr->GetOption<bool>("NoProfessionLimit.AccountBound.SyncSkillGrantedSpells", true);
-    Config.AccountBoundRequireRecipeSkill = sConfigMgr->GetOption<bool>("NoProfessionLimit.AccountBound.RequireRecipeSkill", true);
-    Config.SpellAllowList = ParseSpellList(sConfigMgr->GetOption<std::string>("NoProfessionLimit.AccountBound.SpellAllowList", ""));
-    Config.SpellBlockList = ParseSpellList(sConfigMgr->GetOption<std::string>("NoProfessionLimit.AccountBound.SpellBlockList", ""));
+    Config.AccountBoundEnabled = sConfigMgr->GetOption<bool>("NoProfessionLimit.AccountBound.Enable", false, false);
+    Config.AccountBoundSameFactionOnly = sConfigMgr->GetOption<bool>("NoProfessionLimit.AccountBound.SameFactionOnly", true, false);
+    Config.AccountBoundStartupBackfill = sConfigMgr->GetOption<bool>("NoProfessionLimit.AccountBound.StartupBackfill", false, false);
+    Config.AccountBoundSyncOnLogin = sConfigMgr->GetOption<bool>("NoProfessionLimit.AccountBound.SyncOnLogin", true, false);
+    Config.AccountBoundSyncOnLearn = sConfigMgr->GetOption<bool>("NoProfessionLimit.AccountBound.SyncOnLearn", true, false);
+    Config.AccountBoundSyncOnlineOnReload = sConfigMgr->GetOption<bool>("NoProfessionLimit.AccountBound.SyncOnlineOnReload", true, false);
+    Config.AccountBoundIncludeSecondaryProfessions = sConfigMgr->GetOption<bool>("NoProfessionLimit.AccountBound.IncludeSecondaryProfessions", false, false);
+    Config.AccountBoundSyncSkillProgress = sConfigMgr->GetOption<bool>("NoProfessionLimit.AccountBound.SyncSkillProgress", true, false);
+    Config.AccountBoundSyncProfessionRanks = sConfigMgr->GetOption<bool>("NoProfessionLimit.AccountBound.SyncProfessionRanks", true, false);
+    Config.AccountBoundSyncRecipes = sConfigMgr->GetOption<bool>("NoProfessionLimit.AccountBound.SyncRecipes", true, false);
+    Config.AccountBoundSyncSkillGrantedSpells = sConfigMgr->GetOption<bool>("NoProfessionLimit.AccountBound.SyncSkillGrantedSpells", true, false);
+    Config.AccountBoundRequireRecipeSkill = sConfigMgr->GetOption<bool>("NoProfessionLimit.AccountBound.RequireRecipeSkill", true, false);
+    Config.SpellAllowList = ParseSpellList(sConfigMgr->GetOption<std::string>("NoProfessionLimit.AccountBound.SpellAllowList", "", false));
+    Config.SpellBlockList = ParseSpellList(sConfigMgr->GetOption<std::string>("NoProfessionLimit.AccountBound.SpellBlockList", "", false));
 }
 }
 
